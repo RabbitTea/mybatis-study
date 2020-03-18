@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--Mybatis数据库操作：将DaoImpl中的sql代码用xml配置来完成-->
+<!--namespace=绑定一个对应的Mapper接口（把原来Dao接口中的所有方法的实现移到这个mapper配置标签下）-->
+<mapper namespace="com.sandra.dao.UserMapper">
+
+    <!--结果集映射-->
+    <resultMap id="UserMap" type="User">
+        <!--colum数据库列名；property实体类属性名-->
+        <!--<result column="id" property="id"/>-->
+        <!--<result column="name" property="name"/>-->
+        <!--仅需要转换不一样的字段-->
+        <result column="pwd" property="password"/>
+    </resultMap>
+
+    <!--根据id查询用户；这里结果集映射使用resultMap-->
+    <select id="getUserById" parameterType="int" resultMap="UserMap">
+        select * from mybatis.user where id = #{id}
+    </select>
+
+</mapper>

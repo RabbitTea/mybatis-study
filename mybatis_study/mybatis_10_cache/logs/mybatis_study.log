@@ -1,0 +1,72 @@
+[DEBUG][20-03-18][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-03-18][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-03-18][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][20-03-18][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][20-03-18][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][20-03-18][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][20-03-18][org.apache.ibatis.transaction.jdbc.JdbcTransaction]Opening JDBC Connection
+[DEBUG][20-03-18][org.apache.ibatis.datasource.pooled.PooledDataSource]Created connection 2005167404.
+[DEBUG][20-03-18][com.sandra.dao.UserMapper.queryUserById]==>  Preparing: select * from mybatis.user where id = ? 
+[DEBUG][20-03-18][com.sandra.dao.UserMapper.queryUserById]==> Parameters: 1(Integer)
+[DEBUG][20-03-18][com.sandra.dao.UserMapper.queryUserById]<==      Total: 1
+[DEBUG][20-03-18][org.apache.ibatis.transaction.jdbc.JdbcTransaction]Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@77846d2c]
+[DEBUG][20-03-18][org.apache.ibatis.datasource.pooled.PooledDataSource]Returned connection 2005167404 to pool.
+[DEBUG][20-03-18][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-03-18][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-03-18][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][20-03-18][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][20-03-18][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][20-03-18][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][20-03-18][com.sandra.dao.UserMapper]Cache Hit Ratio [com.sandra.dao.UserMapper]: 0.0
+[DEBUG][20-03-18][org.apache.ibatis.transaction.jdbc.JdbcTransaction]Opening JDBC Connection
+[DEBUG][20-03-18][org.apache.ibatis.datasource.pooled.PooledDataSource]Created connection 1375995437.
+[DEBUG][20-03-18][com.sandra.dao.UserMapper.queryUserById]==>  Preparing: select * from mybatis.user where id = ? 
+[DEBUG][20-03-18][com.sandra.dao.UserMapper.queryUserById]==> Parameters: 1(Integer)
+[DEBUG][20-03-18][com.sandra.dao.UserMapper.queryUserById]<==      Total: 1
+[DEBUG][20-03-18][org.apache.ibatis.transaction.jdbc.JdbcTransaction]Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@5204062d]
+[DEBUG][20-03-18][org.apache.ibatis.datasource.pooled.PooledDataSource]Returned connection 1375995437 to pool.
+[DEBUG][20-03-18][com.sandra.dao.UserMapper]Cache Hit Ratio [com.sandra.dao.UserMapper]: 0.5
+[DEBUG][20-03-18][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-03-18][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-03-18][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][20-03-18][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][20-03-18][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][20-03-18][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][20-03-18][com.sandra.dao.UserMapper]Cache Hit Ratio [com.sandra.dao.UserMapper]: 0.0
+[DEBUG][20-03-18][org.apache.ibatis.transaction.jdbc.JdbcTransaction]Opening JDBC Connection
+[DEBUG][20-03-18][org.apache.ibatis.datasource.pooled.PooledDataSource]Created connection 1375995437.
+[DEBUG][20-03-18][com.sandra.dao.UserMapper.queryUserById]==>  Preparing: select * from mybatis.user where id = ? 
+[DEBUG][20-03-18][com.sandra.dao.UserMapper.queryUserById]==> Parameters: 1(Integer)
+[DEBUG][20-03-18][com.sandra.dao.UserMapper.queryUserById]<==      Total: 1
+[DEBUG][20-03-18][org.apache.ibatis.transaction.jdbc.JdbcTransaction]Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@5204062d]
+[DEBUG][20-03-18][org.apache.ibatis.datasource.pooled.PooledDataSource]Returned connection 1375995437 to pool.
+[DEBUG][20-03-18][com.sandra.dao.UserMapper]Cache Hit Ratio [com.sandra.dao.UserMapper]: 0.5
+[DEBUG][20-03-18][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-03-18][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-03-18][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][20-03-18][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][20-03-18][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][20-03-18][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][20-03-18][com.sandra.dao.UserMapper]Cache Hit Ratio [com.sandra.dao.UserMapper]: 0.0
+[DEBUG][20-03-18][org.apache.ibatis.transaction.jdbc.JdbcTransaction]Opening JDBC Connection
+[DEBUG][20-03-18][org.apache.ibatis.datasource.pooled.PooledDataSource]Created connection 1561408618.
+[DEBUG][20-03-18][com.sandra.dao.UserMapper.queryUserById]==>  Preparing: select * from mybatis.user where id = ? 
+[DEBUG][20-03-18][com.sandra.dao.UserMapper.queryUserById]==> Parameters: 1(Integer)
+[DEBUG][20-03-18][com.sandra.dao.UserMapper.queryUserById]<==      Total: 1
+[DEBUG][20-03-18][org.apache.ibatis.transaction.jdbc.JdbcTransaction]Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@5d11346a]
+[DEBUG][20-03-18][org.apache.ibatis.datasource.pooled.PooledDataSource]Returned connection 1561408618 to pool.
+[DEBUG][20-03-18][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-03-18][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-03-18][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][20-03-18][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][20-03-18][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][20-03-18][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][20-03-18][com.sandra.dao.UserMapper]Cache Hit Ratio [com.sandra.dao.UserMapper]: 0.0
+[DEBUG][20-03-18][org.apache.ibatis.transaction.jdbc.JdbcTransaction]Opening JDBC Connection
+[DEBUG][20-03-18][org.apache.ibatis.datasource.pooled.PooledDataSource]Created connection 1561408618.
+[DEBUG][20-03-18][com.sandra.dao.UserMapper.queryUserById]==>  Preparing: select * from mybatis.user where id = ? 
+[DEBUG][20-03-18][com.sandra.dao.UserMapper.queryUserById]==> Parameters: 1(Integer)
+[DEBUG][20-03-18][com.sandra.dao.UserMapper.queryUserById]<==      Total: 1
+[DEBUG][20-03-18][org.apache.ibatis.transaction.jdbc.JdbcTransaction]Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@5d11346a]
+[DEBUG][20-03-18][org.apache.ibatis.datasource.pooled.PooledDataSource]Returned connection 1561408618 to pool.
+[DEBUG][20-03-18][com.sandra.dao.UserMapper]Cache Hit Ratio [com.sandra.dao.UserMapper]: 0.5

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--Mybatis数据库操作：将DaoImpl中的sql代码用xml配置来完成-->
+<!--namespace=绑定一个对应的Mapper接口（把原来Dao接口中的所有方法的实现移到这个mapper配置标签下）-->
+<mapper namespace="com.sandra.dao.StudentMapper">
+
+</mapper>

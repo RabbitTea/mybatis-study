@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--Mybatis数据库操作：将DaoImpl中的sql代码用xml配置来完成-->
+<!--namespace=绑定一个对应的Mapper接口（把原来Dao接口中的所有方法的实现移到这个mapper配置标签下）-->
+<mapper namespace="com.sandra.dao.TeacherMapper">
+
+    <!--方式二：按结果嵌套处理-->
+    <!--结果集映射-->
+    <resultMap id="teacherStudent" type="Teacher">
+        <!--老师基础信息-->
+        <result property="id" column="tid"/>
+        <result property="name" column="tname"/>
+
+        <!--
+           集合属性; javaType为指定的属性的类型；
+           而集合中的类型信息，使用ofType获取；
+         -->
+        <collection property="students" ofType="Student">
+            <!--学生基础信息-->
+            <result property="id" column="sid"/>
+            <result property="name" column="sname"/>
+            <result property="tid" column="tid"/>
+        </collection>
+    </resultMap>
+
+
+    <!--根据id查询老师；这里结果集映射使用resultMap-->
+    <select id="getTeacher" parameterType="int" resultMap="teacherStudent">
+        select s.id sid, s.name sname, t.name tname, t.id tid
+        from student s, teacher t
+        where s.tid = t.id and t.id = #{tid}
+    </select>
+
+
+
+    <!--====================================================================-->
+
+    <!--方式一：按查询嵌套处理-->
+    <!--先查老师-->
+    <select id="getTeacher2" parameterType="int" resultMap="teacherStudent2">
+        select * from teacher  where id = #{tid}
+    </select>
+
+    <resultMap id="teacherStudent2" type="Teacher">
+
+        <!--List<Student>：javaType指List，ofType指其中具体的泛型类型Student-->
+        <collection property="students" javaType="ArrayList" ofType="Student" select="getStudent" column="tid"/>
+    </resultMap>
+
+    <!--再查学生-->
+    <select id="getStudent" resultType="Student">
+        select * from student where tid = #{tid}
+    </select>
+
+</mapper>

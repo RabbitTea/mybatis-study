@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--Mybatis数据库操作：将DaoImpl中的sql代码用xml配置来完成-->
+<!--namespace=绑定一个对应的Mapper接口（把原来Dao接口中的所有方法的实现移到这个mapper配置标签下）-->
+<mapper namespace="com.sandra.dao.UserMapper">
+
+    <!--select查询语句，id表示Mapper接口的某个方法名；resultType表示映射的实体类（全限定名），即返回结果映射到的类型-->
+    <!--查询全部用户-->
+    <select id="getUserList" resultType="User">
+        select * from mybatis.user
+    </select>
+
+    <!--根据id查询用户-->
+    <select id="getUserById" parameterType="int" resultType="User">
+        select * from mybatis.user where id = #{id}
+    </select>
+
+    <!--插入一个用户 (对象中的属性可以直接取到)-->
+    <insert id="addUser" parameterType="User">
+        insert into mybatis.user (id, name, pwd) values (#{id}, #{name}, #{pwd})
+    </insert>
+
+    <!--修改一个用户-->
+    <update id="updateUser" parameterType="User">
+        update mybatis.user set
+          name = #{name},
+          pwd = #{pwd}
+        where id = #{id}
+    </update>
+
+    <!--根据id删除一个用户-->
+    <delete id="deleteUser" parameterType="int">
+        delete from mybatis.user where id = #{id}
+    </delete>
+
+</mapper>

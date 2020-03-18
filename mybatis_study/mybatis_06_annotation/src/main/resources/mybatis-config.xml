@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--configuration核心配置文件-->
+<configuration>
+
+    <!--引入外部配置文件-->
+    <properties resource="db.properties">
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
+    </properties>
+
+    <settings>
+        <!--设置日志，name与官方手册中一致，注意细节！！-->
+
+        <!--标准日志工厂的实现-->
+        <!--<setting name="logImpl" value="STDOUT_LOGGING"/>-->
+
+        <!--log4j日志的实现-->
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+
+    <!--设置类型别名-->
+    <typeAliases>
+        <!--实体类较少时可使用-->
+        <typeAlias alias="User" type="com.sandra.pojo.User"/>
+        <!--
+            若实例类较多，建议用这一种
+            <package name="com.sandra.pojo"/>
+        -->
+    </typeAliases>
+
+    <!--可配置多套environment；选择哪一套环境就将default改为该环境的id名-->
+    <environments default="test">
+        <environment id="development">
+            <!--事务管理器-->
+            <transactionManager type="JDBC"/>
+            <!--数据源：负责连接数据库；如原JDBC中的dbcp和c3p0，此外还有druid，和spring boot默认集成的一个-->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/mybatis?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+        </environment>
+
+        <!--另一套环境，连接的数据库可以是Oracle，或者MySQL的具体属性配置不同-->
+        <environment id="test">
+            <!--事务管理器-->
+            <transactionManager type="JDBC"/>
+            <!--数据源：负责连接数据库-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--绑定接口；注意和使用xml配置开发不同；这里选择class方式-->
+    <mappers>
+        <mapper class="com.sandra.dao.UserMapper"/>
+    </mappers>
+
+</configuration>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sandra.dao.BlogMapper">
+
+    <insert id="addBlog" parameterType="Blog">
+        insert into blog
+        (id, title, author, create_time, views)
+        values
+        (#{id}, #{title}, #{author}, #{createTime}, #{views})
+    </insert>
+
+    <!--sql标签；抽取通用的动态SQL语句，在需要的地方通过引用唯一id来调用; 与include配合使用-->
+    <sql id="title-author-sql">
+        <if test="title != null">
+            title = #{title}
+        </if>
+        <if test="author != null">
+            and author = #{author}
+        </if>
+    </sql>
+
+    <!--
+       使用if元素拼接查询语句；
+       期望：传指定的title可查询符合条件的博客；也可以传指定的author查询符合条件的博客；也可以同时作为指定条件;
+       使用where标签，使原始SQL不需要加where关键词，并在需要的时候加上；
+    -->
+    <select id="queryBlogIF" parameterType="map" resultType="Blog">
+        select * from mybatis.blog
+        <where>
+            <include refid="title-author-sql"/>
+        </where>
+    </select>
+
+    <!--
+       使用choose(when,otherwise)标签查询语句；
+       类似Java中的switch...case；
+       只要满足一个条件就结束；
+       otherwise的值一定要传，否则查询为空；
+    -->
+    <select id="queryBlogChoose" parameterType="map" resultType="Blog">
+        select * from mybatis.blog
+        <where>
+            <choose>
+                <when test="title != null">
+                    title = #{title}
+                </when>
+
+                <when test="author != null">
+                    and author = #{author}
+                </when>
+
+                <otherwise>
+                    and views = #{views}
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
+    <!--使用set标签更新语句；包含if标签，对更新参数进行不为空的校验-->
+    <update id="updateBlog" parameterType="map">
+        update blog
+        <set>
+            <if test="title != null"> title= #{title},</if>
+            <if test="author != null"> author = #{author}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+
+    <!--
+       使用froeach标签进行迭代查询;
+       动态拼接select * from user wher 1=1  and (id=1 or id=2 id=3)； 一个id可能会有三个值，在map传值时要分别起不同的key名，这样又要在数据库处理时取别名;
+
+       现在传递的是万能的map，可以存放一个集合list;
+       拼接时设定好open开头，close结尾和separator分隔符，collection集合名；item取出来的每一项名
+     -->
+    <select id="queryBlogForeach" parameterType="map" resultType="Blog">
+        select * from mybatis.blog
+        <where>
+            <foreach collection="ids" item="id"
+                     open="and (" close=")" separator="or">
+                id = #{id}
+            </foreach>
+        </where>
+    </select>
+
+</mapper>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--Mybatis数据库操作：将DaoImpl中的sql代码用xml配置来完成-->
+<!--namespace=绑定一个对应的Mapper接口（把原来Dao接口中的所有方法的实现移到这个mapper配置标签下）-->
+<mapper namespace="com.sandra.dao.UserMapper">
+
+    <!--select查询语句，id表示Mapper接口的某个方法名；resultType表示映射的实体类（全限定名），即返回结果映射到的类型-->
+    <!--查询全部用户-->
+    <select id="getUserList" resultType="com.sandra.pojo.User">
+        select * from mybatis.user
+    </select>
+
+    <!--根据id查询用户-->
+    <select id="getUserById" parameterType="int" resultType="com.sandra.pojo.User">
+        select * from mybatis.user where id = #{id}
+    </select>
+
+    <!--根据map查询用户-->
+    <select id="getUserByMap" parameterType="map" resultType="com.sandra.pojo.User">
+        select * from mybatis.user where id = #{userid} and name = #{username}
+    </select>
+
+    <!--插入一个用户 (对象中的属性可以直接取到)-->
+    <insert id="addUser" parameterType="com.sandra.pojo.User">
+        insert into mybatis.user (id, name, pwd) values (#{id}, #{name}, #{pwd})
+    </insert>
+
+    <!--用Map插入一个用户（因User实体类做参数，在这里取值时要取出全部数据表中不为空的值，且名字要与数据列一致；但map可以传递任意key，key定义可与数据库的列名不同）-->
+    <insert id="addUser2" parameterType="map">
+        insert into mybatis.user (id, name, pwd) values (#{userid}, #{username}, #{userpassword})
+    </insert>
+
+    <!--修改一个用户-->
+    <update id="updateUser" parameterType="com.sandra.pojo.User">
+        update mybatis.user set
+          name = #{name},
+          pwd = #{pwd}
+        where id = #{id}
+    </update>
+
+    <!--根据id删除一个用户-->
+    <delete id="deleteUser" parameterType="int">
+        delete from mybatis.user where id = #{id}
+    </delete>
+
+    <!--
+        构造的SQL：select * from mybatis.user where id = ?
+        用户实际传值：select * from mybatis.user where id = 1 or 1=1 （这样会把所有数据都查询出来）
+
+        这里若不用Java实际传值，则应构造：select * from mybatis.user where name like "%"#{value}"%"
+    -->
+    <!--模糊查询-->
+    <select id="getUserLike" resultType="com.sandra.pojo.User">
+        select * from mybatis.user where name like #{value}
+    </select>
+
+</mapper>

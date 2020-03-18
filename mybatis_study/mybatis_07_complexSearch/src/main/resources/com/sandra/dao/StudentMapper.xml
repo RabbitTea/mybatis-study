@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--Mybatis数据库操作：将DaoImpl中的sql代码用xml配置来完成-->
+<!--namespace=绑定一个对应的Mapper接口（把原来Dao接口中的所有方法的实现移到这个mapper配置标签下）-->
+<mapper namespace="com.sandra.dao.StudentMapper">
+
+    <!--方式二：按结果嵌套处理；查询学生信息，包含关联的老师-->
+    <select id="getStudentList2" resultMap="studentTeacher">
+        select s.id sid, s.name sname, t.name tname
+        from student s, teacher t
+        where s.tid = t.id
+    </select>
+
+    <resultMap id="studentTeacher" type="Student">
+        <!--若在SQL语句中取了别名，column的名字就是别名-->
+        <result property="id" column="sid"/>
+        <result property="name" column="sname"/>
+
+        <!--按结果嵌套，不需要写column为tname，就写javaType为Teacher，结果就要映射为一个teacher；-->
+        <association property="teacher" javaType="Teacher">
+            <!--映射处理需要再嵌套一个结果-->
+            <result property="name" column="tname"/>
+        </association>
+    </resultMap>
+
+
+    <!--================================================================================================================-->
+
+
+
+    <!--方式一之结果集映射-->
+    <resultMap id="classInfo" type="Student">
+        <!--result只能针对单个属性，即基本类型和String类型的属性；这里数据表列名和实体类字段名一致时可不配置-->
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+
+        <!--复杂属性映射；针对一个实体类属性类型是另一个实体类的情况;
+            对象：使用association [多对一的情况]；
+            集合：使用collection  [一对多的情况]；
+            property是设置的属性名，不是类型名！！注意大小写;
+            javaType是实体类型名；
+            这里column tid是一个int类型，要根据这个tid查询出具体的teacher，所以需要select，关联到一个具体的对teacher表的查询；
+            这个查询虽然是查teacher表但也要写到studentMapper配置中！！！
+        -->
+        <association property="teacher" column="tid" javaType="Teacher" select="getTeacher"/>
+    </resultMap>
+
+
+    <!--查询所有的学生信息，含关联的老师信息；这里结果集映射使用resultMap-->
+    <!--
+        方式一：按照查询嵌套处理
+        思路：
+        1. 查询所有的学生信息； student表；
+        2. 根据查询出来的学生中的tid，查询对应的老师；teacher表； 子查询
+    -->
+    <select id="getStudentList" resultMap="classInfo">
+        select * from mybatis.student
+    </select>
+
+    <select id="getTeacher" parameterType="int" resultType="Teacher">
+        select * from mybatis.teacher where id = #{tid}
+    </select>
+
+</mapper>
